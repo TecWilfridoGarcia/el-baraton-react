@@ -2,11 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ShoppingCart from '../../components/ShoppingCart'
 import { deleteProduct } from '../../actions'
- 
 
 class ShoppingCartContainer extends React.Component {
-    render(){
-        const { products, total, deleteProduct} = this.props
+    render () {
+        const { products, total, deleteProduct } = this.props
         return (
             <ShoppingCart total={total} products={products} deleteProduct={deleteProduct} />
         )
@@ -16,8 +15,9 @@ class ShoppingCartContainer extends React.Component {
 const mapStateToProps = state => ({
     products: state.products
 })
-const mapDispachToProps = dispatch => ({
-    deleteProduct:(product) => dispatch(deleteProduct(product))
+
+const mapDispatchToProps = dispatch => ({
+    deleteProduct: (product) => dispatch(deleteProduct(product))
 })
 
-export default connect(mapStateToProps,mapDispachToProps)(ShoppingCartContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartContainer)

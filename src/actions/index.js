@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 
 export const actionsType = {
@@ -10,7 +9,8 @@ export const actionsType = {
 	ERROR: 'ERROR'
 }
 
-//ACTIONS
+// ACTIONS
+
 export const getCategories = () => dispatch => {
 	return axios
 		.get('data/categories.json')
@@ -23,44 +23,49 @@ export const getCategories = () => dispatch => {
 			dispatch(showError())
 		})
 }
+
 export const getProducts = () => dispatch => {
-    return axios 
-    .get('/data/products.json')
-    .then(response =>{
-        console.log(response)
-        dispatch(receiveProducts(response))
-    })
-    .catch(error =>{
-        console.log(error)
-        dispatch(showError())
-    })
+	dispatch(loading())
+	return axios
+		.get('data/products.json')
+		.then(response => {
+			console.log(response)
+			dispatch(receiveProducts(response))
+		})
+		.catch(error => {
+			console.log(error)
+			dispatch(showError())
+		})
 }
 
-const receiveProducts = response =>({
-    type: actionsType.RECEIVE_PRODUCTS,
-    categories: response.data
-})
-const receiveCategories = response =>({
-    type: actionsType.RECEIVE_CATEGORIES,
-    categories: response.data
+const receiveProducts = response => ({
+  type: actionsType.RECEIVE_PRODUCTS,
+  products: response.data
 })
 
-export const showError = () =>  {
-    return { type: actionsType.ERROR }
-}
-export const loading = () =>  {
-    return { type: actionsType.LOADING }
+const receiveCategories = response => ({
+  type: actionsType.RECEIVE_CATEGORIES,
+  categories: response.data
+})
+
+export const loading = () => {
+  return { type: actionsType.LOADING }
 }
 
-export const addToCart = product =>{
-    return {
-        type: actionsType.ADD_TO_CART,
-        product
-    }
+export const showError = () => {
+  return { type: actionsType.ERROR }
 }
-export const deleteProduct = product =>{
-    return {
-        type: actionsType.DELETE_PRODUCT,
-        product
-    }
+
+export const addToCart = product => {
+  return {
+    type: actionsType.ADD_TO_CART,
+    product
+  }
+}
+
+export const deleteProduct = product => {
+  return {
+    type: actionsType.DELETE_PRODUCT,
+    product
+  }
 }

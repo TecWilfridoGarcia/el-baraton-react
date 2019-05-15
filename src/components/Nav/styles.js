@@ -10,10 +10,9 @@ export const MobileNav = styled.ul`
         padding: 10px;
         font-weight: bold;
         border-bottom: 1px solid white;
-       a {
-            color: #ffffff;
-            margin-top: 15px;
-            margin-left: 18px;
+        
+        a {
+            color: #0000;
         }
     }
     @media (max-width: 992px) {
