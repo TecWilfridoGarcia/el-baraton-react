@@ -1,3 +1,10 @@
+App desarrollada con la libreria React 16.8 usando el patron Redux para optimizar y organizar los datos.
+
+-Clonar o descargar el repositorio
+-ejecutar npm install
+-correr la aplicacion con yarn start
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
